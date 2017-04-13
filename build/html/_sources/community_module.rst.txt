@@ -5,6 +5,9 @@ Community Module
 ********************
 Overview
 ********************
+
+Community Health Work
+----------------------
 Access to a health provider is something that is commonly taken for granted.
 From a kenyan perspective, the doctor to patient ratio is approximately 2:10000, implying that there are chances you may not get to see one in your lifetime!.
 
