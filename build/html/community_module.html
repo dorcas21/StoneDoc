@@ -88,7 +88,11 @@
 <li class="toctree-l1 current"><a class="reference internal" href="modules.html">Modules</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="clinical_module.html">Clinical Module</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Community Health Work</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#community-module">Community module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#community-module">Community module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#household-registration">Household registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#household-residents-registration">Household Residents Registration</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -168,13 +172,13 @@ From a kenyan perspective, the doctor to patient ratio is approximately 2:10000,
 <h2>Community module<a class="headerlink" href="#community-module" title="Permalink to this headline">¶</a></h2>
 <p>The community module is primarily meant for recording household visits/episodes that are done by Community Health Workers.  To achieve this, the following distinct activities are defined:</p>
 <div class="section" id="household-registration">
-<h3>Household registration:<a class="headerlink" href="#household-registration" title="Permalink to this headline">¶</a></h3>
+<h3>Household registration<a class="headerlink" href="#household-registration" title="Permalink to this headline">¶</a></h3>
 <p>A household refers to a house and its occupants.
 Unique households are defined during a household mapping activity. These details are captured into the com_household table and implemented through HouseholdController in StoneHMIS
 com_household table.</p>
 </div>
 <div class="section" id="household-residents-registration">
-<h3>Household Residents Registration:<a class="headerlink" href="#household-residents-registration" title="Permalink to this headline">¶</a></h3>
+<h3>Household Residents Registration<a class="headerlink" href="#household-residents-registration" title="Permalink to this headline">¶</a></h3>
 <p>These are the occupants of the house.
 A house must have residents for community health work to be done.
 To avoid running parallel systems, I.e community module running parallel to stoneHMIS, household residents are registered during the normal registration in stone,(in the registry module). However, the household residents details go into a different table called com_household_residence, which is linked to the reg_person table through reg_person_id.</p>
@@ -183,6 +187,135 @@ To avoid running parallel systems, I.e community module running parallel to ston
 <p class="last">The residents are registered starting with the head of the household, so that the subsequent occupants are assigned that head.</p>
 </div>
 <p>The com_household_residence table contains :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="16%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Null</th>
+<th class="head">Default</th>
+<th class="head">Comments</th>
+<th class="head">MIME</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>com_household_residence_id</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>reg_person_id</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>household_number</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>date_registered</td>
+<td>date</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>is_household_head</td>
+<td>int(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>date_created</td>
+<td>timestamp</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>reg_episode_id</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>person_code</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>altering_user_id</td>
+<td>int(20)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>registering_user_id</td>
+<td>int(20)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Indexes</strong></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="6%" />
+<col width="8%" />
+<col width="8%" />
+<col width="28%" />
+<col width="14%" />
+<col width="11%" />
+<col width="6%" />
+<col width="9%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyname</th>
+<th class="head">Type</th>
+<th class="head">Unique</th>
+<th class="head">Packed</th>
+<th class="head">Column</th>
+<th class="head">Cardinality</th>
+<th class="head">Collation</th>
+<th class="head">Null</th>
+<th class="head">Comment</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PRIMARY</td>
+<td>BTREE</td>
+<td>Yes</td>
+<td>No</td>
+<td>com_household_residence_id</td>
+<td>4</td>
+<td>A</td>
+<td>No</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>

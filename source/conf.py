@@ -101,7 +101,7 @@ todo_include_todos = False
 html_theme_options = {
     'collapse_navigation': False,
     'display_version': False,
-    'navigation_depth': 3,
+    'navigation_depth': 5,
     # "rightsidebar": "false",
     # "relbarbgcolor": "black"
 }

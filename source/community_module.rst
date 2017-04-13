@@ -17,14 +17,14 @@ Community module
 The community module is primarily meant for recording household visits/episodes that are done by Community Health Workers.  To achieve this, the following distinct activities are defined:
 
 
-Household registration:
+Household registration
 -----------------------
 A household refers to a house and its occupants.
 Unique households are defined during a household mapping activity. These details are captured into the com_household table and implemented through HouseholdController in StoneHMIS
 com_household table.
 
 
-Household Residents Registration:
+Household Residents Registration
 ---------------------------------
 These are the occupants of the house.
 A house must have residents for community health work to be done. 
@@ -36,3 +36,38 @@ To avoid running parallel systems, I.e community module running parallel to ston
 
 
 The com_household_residence table contains : 
+
++----------------------------+------------+----------+----------+----------+------+
+|           Column           | Type       | Null     | Default  | Comments | MIME | 
++============================+============+==========+==========+==========+======+
+| com_household_residence_id | bigint(20) |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| reg_person_id              | bigint(20) |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| household_number           | bigint(20) |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| date_registered            | 	date      |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| is_household_head          | int(20)    |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| date_created               | timestamp  |  Yes     |    Null  |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| reg_episode_id             | bigint(20) |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| person_code                | bigint(20) |  No      |          |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| altering_user_id           | 	int(20)   |  Yes     |    Null  |          |      |
++----------------------------+------------+----------+----------+----------+------+
+| registering_user_id        | int(20)    |  Yes     |    Null  |          |      |
++----------------------------+------------+----------+----------+----------+------+
+
+
+**Indexes**
+
+
++---------+------+--------+--------+----------------------------+--------------+-----------+------+---------+
+| Keyname | Type | Unique | Packed |    Column                  |  Cardinality | Collation | Null | Comment | 
++=========+======+========+========+============================+==============+===========+======+=========+
+| PRIMARY | BTREE| Yes    | No     | com_household_residence_id |  4           |   A       |   No |         |
++---------+------+--------+--------+----------------------------+--------------+-----------+------+---------+
+
