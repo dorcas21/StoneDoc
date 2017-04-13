@@ -1,7 +1,10 @@
 #####################
-Community Health Work
+Community Module
 #####################
 
+********************
+Overview
+********************
 Access to a health provider is something that is commonly taken for granted.
 From a kenyan perspective, the doctor to patient ratio is approximately 2:10000, implying that there are chances you may not get to see one in your lifetime!.
 
@@ -11,7 +14,7 @@ A community health worker is trained to provide the most essential life saving i
 
 
 *****************
-Community module
+The Module
 *****************
 
 The community module is primarily meant for recording household visits/episodes that are done by Community Health Workers.  To achieve this, the following distinct activities are defined:

@@ -6,5 +6,10 @@ Modules
    :maxdepth: 2
    :caption: Contents:
 
-   clinical_module
+   registry_module
+   clinical_module   
    community_module
+   dhis_module
+   pharmacy_module
+   laboratory_module
+   puupid_module
