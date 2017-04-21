@@ -97,7 +97,15 @@ To avoid running parallel systems, I.e community module running parallel to ston
  
 .. note::
 
-   The residents are registered starting with the head of the household, so that the subsequent occupants are assigned that head. 
+   * The residents are registered starting with the head of the household, so that the subsequent occupants are assigned that head.s
+   * A household cannot have more than one head.
+   * A head can lead more than one household.
+   * A person can belong to more than one household.
+   * A worker will have a relationship of 'other related person' to the head.
+   * An adopted child will have a relationship of 'adopted child' or 'adopted daughter' or 'adopted son' to the head.
+   * An Orphan cannot exceed 18 years!
+   * A head cannot exceed 80 years! 
+
 
 
 The com_household_residence table contains : 

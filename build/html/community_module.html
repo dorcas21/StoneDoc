@@ -330,7 +330,16 @@ A house must have residents for community health work to be done.
 To avoid running parallel systems, I.e community module running parallel to stoneHMIS, household residents are registered during the normal registration in stone,(in the registry module). However, the household residents details go into a different table called com_household_residence, which is linked to the reg_person table through reg_person_id.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The residents are registered starting with the head of the household, so that the subsequent occupants are assigned that head.</p>
+<ul class="last simple">
+<li>The residents are registered starting with the head of the household, so that the subsequent occupants are assigned that head.s</li>
+<li>A household cannot have more than one head.</li>
+<li>A head can lead more than one household.</li>
+<li>A person can belong to more than one household.</li>
+<li>A worker will have a relationship of &#8216;other related person&#8217; to the head.</li>
+<li>An adopted child will have a relationship of &#8216;adopted child&#8217; or &#8216;adopted daughter&#8217; or &#8216;adopted son&#8217; to the head.</li>
+<li>An Orphan cannot exceed 18 years!</li>
+<li>A head cannot exceed 80 years!</li>
+</ul>
 </div>
 <p>The com_household_residence table contains :</p>
 <table border="1" class="docutils">
