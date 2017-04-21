@@ -95,6 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#the-module">The Module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-architecture">Module Architecture</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#household-registration">Household registration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#household-residents-registration">Household Residents Registration</a></li>
 </ul>
@@ -105,6 +106,7 @@
 <li class="toctree-l2"><a class="reference internal" href="pharmacy_module.html">Pharmacy Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="laboratory_module.html">Laboratory Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="puupid_module.html">Puupid Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ubuntu_health.html">Ubuntu Health</a></li>
 </ul>
 </li>
 </ul>
@@ -187,11 +189,139 @@ From a kenyan perspective, the doctor to patient ratio is approximately 2:10000,
 <div class="section" id="the-module">
 <h2>The Module<a class="headerlink" href="#the-module" title="Permalink to this headline">¶</a></h2>
 <p>The community module is primarily meant for recording household visits/episodes that are done by Community Health Workers.  To achieve this, the following distinct activities are defined:</p>
+<div class="section" id="module-architecture">
+<h3>Module Architecture<a class="headerlink" href="#module-architecture" title="Permalink to this headline">¶</a></h3>
+<p><strong>Class Diagram</strong></p>
+<p>Below is a simplified class diagram of the module workflow:</p>
+<p><em>Registration</em></p>
+<p>Once a Community Health Worker visits a house, household registration takes place first since residents must be assigned to a house as they are registered.
+During house registration, a house number is provided, so as to uniquely identify the house.
+The location of the house is also specified such as the community unity, village, ward, constituency, and the county from which the house exists.
+The household residents are added, starting with the <strong>head</strong> of the family.</p>
+<p>Below is a class diagram that elaborates this process:</p>
+<img alt="_images/reg.png" src="_images/reg.png" />
+<p><em>Visit</em></p>
+<p>Once a household and its residents exist in the system, a visit is done. A visit can be done either by a person or by a household. A visit by a person details are stored in a different table from a visit by a household since both processes are unique. The diagram below explains further the processes:</p>
+<img alt="_images/visit.png" src="_images/visit.png" />
+</div>
 <div class="section" id="household-registration">
 <h3>Household registration<a class="headerlink" href="#household-registration" title="Permalink to this headline">¶</a></h3>
 <p>A household refers to a house and its occupants.
 Unique households are defined during a household mapping activity. These details are captured into the com_household table and implemented through HouseholdController in StoneHMIS
 com_household table.</p>
+<p>The com_household table contains :</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="36%" />
+<col width="17%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Column</th>
+<th class="head">Type</th>
+<th class="head">Null</th>
+<th class="head">Default</th>
+<th class="head">Comments</th>
+<th class="head">MIME</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>com_household_id</td>
+<td>int(11)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>household_number</td>
+<td>varchar(255)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>com_unit_id</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>com_user_id</td>
+<td>bigint(20)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>county_of_household</td>
+<td>varchar(50)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>constituency_of_household</td>
+<td>varchar(50)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>ward_of_household</td>
+<td>varchar(255)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>village_of_household</td>
+<td>varchar(255)</td>
+<td>No</td>
+<td>&#160;</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>household_latitude</td>
+<td>bigint(10,6)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>household_longitude</td>
+<td>bigint(10,6)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>date_registered</td>
+<td>int(20)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>registering_user_id</td>
+<td>int(20)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>registering_user_id</td>
+<td>int(20)</td>
+<td>Yes</td>
+<td>Null</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="household-residents-registration">
 <h3>Household Residents Registration<a class="headerlink" href="#household-residents-registration" title="Permalink to this headline">¶</a></h3>
@@ -332,6 +462,7 @@ To avoid running parallel systems, I.e community module running parallel to ston
 </tr>
 </tbody>
 </table>
+<p><strong>heeey</strong></p>
 </div>
 </div>
 </div>

@@ -13,3 +13,4 @@ Modules
    pharmacy_module
    laboratory_module
    puupid_module
+   ubuntu_health
